@@ -3,6 +3,7 @@
 from datetime import UTC, datetime, timedelta
 from itertools import pairwise, zip_longest
 from typing import Annotated, Literal
+from typing import Optional
 
 from pydantic import BaseModel, Field
 
@@ -134,7 +135,8 @@ class Installation(BaseModel):
     tariff_plan_accepted: datetime = Field(alias="tariffPlanAccepted")
 
     devices: list[Device]
-    power_management: PowerManagement = Field(alias="pm")
+    """power_management: PowerManagement = Field(alias="pm")"""
+    power_management: Optional[PowerManagement] = Field(default=None, alias="pm")
 
 
 class Customer(BaseModel):
